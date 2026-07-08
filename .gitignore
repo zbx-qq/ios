@@ -1,0 +1,12 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.p12
+*.mobileprovision
+*.cer
+*.key
+p12_password.txt
+github-secrets/
