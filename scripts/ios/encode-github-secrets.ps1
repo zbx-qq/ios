@@ -15,7 +15,8 @@ New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 [Convert]::ToBase64String([IO.File]::ReadAllBytes($p12Path)) |
   Set-Content -LiteralPath (Join-Path $outputDir 'IOS_P12_BASE64.txt') -Encoding ascii
 
-Get-Content -LiteralPath $passwordPath -Raw |
+$password = (Get-Content -LiteralPath $passwordPath -Raw).Trim()
+$password |
   Set-Content -LiteralPath (Join-Path $outputDir 'IOS_P12_PASSWORD.txt') -Encoding ascii
 
 [Convert]::ToBase64String([IO.File]::ReadAllBytes($profilePath)) |
