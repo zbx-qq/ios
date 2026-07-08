@@ -1,6 +1,7 @@
 name: MingZhuTechnician
 options:
   minimumXcodeGenVersion: 2.40.0
+  xcodeVersion: "15.0"
   deploymentTarget:
     iOS: "14.0"
 settings:
