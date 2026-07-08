@@ -12,15 +12,24 @@ if (!(Test-Path $profilePath)) { throw "Missing mobileprovision: $profilePath" }
 $outputDir = Join-Path $certDir 'github-secrets'
 New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
 
-[Convert]::ToBase64String([IO.File]::ReadAllBytes($p12Path)) |
-  Set-Content -LiteralPath (Join-Path $outputDir 'IOS_P12_BASE64.txt') -Encoding ascii
+[IO.File]::WriteAllText(
+  (Join-Path $outputDir 'IOS_P12_BASE64.txt'),
+  [Convert]::ToBase64String([IO.File]::ReadAllBytes($p12Path)),
+  [Text.Encoding]::ASCII
+)
 
 $password = (Get-Content -LiteralPath $passwordPath -Raw).Trim()
-$password |
-  Set-Content -LiteralPath (Join-Path $outputDir 'IOS_P12_PASSWORD.txt') -Encoding ascii
+[IO.File]::WriteAllText(
+  (Join-Path $outputDir 'IOS_P12_PASSWORD.txt'),
+  $password,
+  [Text.Encoding]::ASCII
+)
 
-[Convert]::ToBase64String([IO.File]::ReadAllBytes($profilePath)) |
-  Set-Content -LiteralPath (Join-Path $outputDir 'IOS_MOBILEPROVISION_BASE64.txt') -Encoding ascii
+[IO.File]::WriteAllText(
+  (Join-Path $outputDir 'IOS_MOBILEPROVISION_BASE64.txt'),
+  [Convert]::ToBase64String([IO.File]::ReadAllBytes($profilePath)),
+  [Text.Encoding]::ASCII
+)
 
 Write-Host "Generated GitHub secret files:"
 Get-ChildItem -LiteralPath $outputDir | Select-Object FullName, Length
