@@ -12,13 +12,15 @@ env:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Show Xcode version
-        run: xcodebuild -version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_26.5.app
+          xcodebuild -version
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -75,12 +77,7 @@ jobs:
 
       - name: Generate Xcode project
         working-directory: ${{ env.IOS_PROJECT_DIR }}
-        run: |
-          set -euo pipefail
-          xcodegen generate
-          PBXPROJ="$SCHEME.xcodeproj/project.pbxproj"
-          /usr/bin/perl -0pi -e 's/objectVersion = 77;/objectVersion = 56;/g; s/compatibilityVersion = "Xcode 16\.0";/compatibilityVersion = "Xcode 14.0";/g' "$PBXPROJ"
-          grep -E 'objectVersion|compatibilityVersion' "$PBXPROJ"
+        run: xcodegen generate
 
       - name: Archive
         working-directory: ${{ env.IOS_PROJECT_DIR }}
