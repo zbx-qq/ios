@@ -3,192 +3,454 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="贝尼科技专注于 AI 自动化、微信小程序、H5、iOS、Android、企业管理系统与云端部署，为企业提供从产品设计到上线运维的一站式技术服务。">
-  <meta name="keywords" content="贝尼科技,AI自动化,小程序开发,App开发,H5开发,企业软件,系统定制">
-  <meta name="theme-color" content="#07111f">
-  <title>贝尼科技｜AI 与软件定制开发</title>
+  <meta name="description" content="不懂代码也没关系。贝尼科技把你的生意想法做成小程序、App、AI自动化工具和管理系统，从需求梳理到上线全程有人带。">
+  <meta name="keywords" content="贝尼科技,小程序开发,App开发,AI自动化,上门服务系统,预约系统,管理系统,软件定制">
+  <meta name="theme-color" content="#ffffff">
+  <title>贝尼科技｜不懂代码，也能把想法做成产品</title>
   <style>
     :root{
-      --bg:#050b14;--bg2:#091321;--panel:rgba(15,29,48,.72);--panel2:#0f1d30;
-      --text:#eef6ff;--muted:#9db0c7;--line:rgba(155,190,225,.15);
-      --cyan:#43e7ff;--blue:#5c7cff;--purple:#9c6cff;--green:#5ff0b0;
-      --shadow:0 24px 80px rgba(0,0,0,.36);--radius:24px;
+      --brand:#635bff;
+      --brand2:#8b5cf6;
+      --orange:#ff7a45;
+      --green:#16a085;
+      --ink:#18212f;
+      --muted:#667085;
+      --line:#e8eaf0;
+      --soft:#f7f7ff;
+      --soft2:#fff7f2;
+      --card:#ffffff;
+      --shadow:0 18px 60px rgba(39,43,74,.10);
+      --radius:24px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;color:var(--text);background:
-      radial-gradient(circle at 20% -10%,rgba(67,231,255,.15),transparent 32%),
-      radial-gradient(circle at 85% 10%,rgba(156,108,255,.15),transparent 28%),
-      linear-gradient(180deg,var(--bg),#07111e 45%,#050b14);
+    body{
+      margin:0;
+      color:var(--ink);
+      background:#fff;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
-      line-height:1.65;overflow-x:hidden
+      line-height:1.65;
+      overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
-    button{font:inherit}
-    .container{width:min(1180px,calc(100% - 40px));margin:auto}
-    .grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
-    .orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.14}.orb.a{width:300px;height:300px;background:var(--cyan);left:-120px;top:35%}.orb.b{width:360px;height:360px;background:var(--purple);right:-170px;top:54%}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(5,11,20,.68);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}
-    .topbar.scrolled{border-color:var(--line);background:rgba(5,11,20,.9)}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em;font-size:20px}
-    .logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue) 55%,var(--purple));box-shadow:0 8px 28px rgba(67,231,255,.2)}
-    .logo svg{width:24px;height:24px}
-    .navlinks{display:flex;gap:28px;align-items:center;color:#c9d7e8;font-size:15px}.navlinks a{transition:.2s}.navlinks a:hover{color:#fff}
-    .nav-cta,.btn-primary{background:linear-gradient(135deg,var(--cyan),#6d91ff 58%,var(--purple));color:#031019;font-weight:800;box-shadow:0 10px 30px rgba(73,179,255,.23)}
-    .nav-cta{padding:11px 18px;border-radius:999px}
-    .menu{display:none;background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
-    .hero{min-height:760px;display:grid;align-items:center;padding:80px 0 60px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:64px}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(83,220,255,.25);background:rgba(39,120,150,.12);border-radius:999px;color:#bfefff;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-    .dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 6px rgba(95,240,176,.1)}
-    h1{font-size:clamp(46px,6.1vw,80px);line-height:1.08;letter-spacing:-.045em;margin:24px 0 22px}
-    .gradient-text{background:linear-gradient(100deg,#fff 10%,#80eaff 45%,#8ca2ff 72%,#c48bff);-webkit-background-clip:text;color:transparent}
-    .hero p{font-size:19px;color:var(--muted);max-width:680px;margin:0 0 32px}
-    .actions{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 21px;border-radius:14px;border:1px solid transparent;transition:.25s;cursor:pointer}.btn:hover{transform:translateY(-2px)}
-    .btn-outline{border-color:var(--line);background:rgba(255,255,255,.035);color:#eaf4ff}.btn-outline:hover{border-color:rgba(83,220,255,.45);background:rgba(83,220,255,.07)}
-    .trust{margin-top:34px;display:flex;gap:22px;flex-wrap:wrap;color:#b9c9db;font-size:14px}.trust span{display:flex;align-items:center;gap:8px}.check{color:var(--green)}
-    .visual{position:relative;min-height:520px;display:grid;place-items:center}
-    .core{width:min(390px,90vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,rgba(67,231,255,.24),rgba(92,124,255,.07) 45%,transparent 68%);border:1px solid rgba(108,210,255,.2);box-shadow:inset 0 0 80px rgba(76,145,255,.09),0 0 90px rgba(67,231,255,.08)}
-    .core:before,.core:after{content:"";position:absolute;border:1px solid rgba(129,189,255,.17);border-radius:50%;inset:-35px;animation:spin 22s linear infinite}.core:after{inset:42px;border-style:dashed;animation-direction:reverse;animation-duration:15s}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .chip{width:164px;height:164px;border-radius:36px;background:linear-gradient(145deg,rgba(32,55,82,.98),rgba(8,20,35,.98));border:1px solid rgba(113,203,255,.28);box-shadow:0 28px 80px rgba(0,0,0,.46),inset 0 0 35px rgba(67,231,255,.05);display:grid;place-items:center;position:relative;z-index:2}
-    .chip strong{font-size:44px;letter-spacing:-.06em;background:linear-gradient(135deg,var(--cyan),#fff 58%,#a989ff);-webkit-background-clip:text;color:transparent}
-    .chip small{position:absolute;bottom:28px;color:#8eb2cf;letter-spacing:.18em}
-    .node{position:absolute;padding:10px 14px;border-radius:13px;background:rgba(12,28,47,.86);border:1px solid var(--line);box-shadow:var(--shadow);font-size:13px;color:#d9e9f8;backdrop-filter:blur(12px)}
-    .n1{top:9%;left:2%}.n2{top:18%;right:-4%}.n3{bottom:18%;left:-3%}.n4{bottom:7%;right:6%}
-    .node b{color:var(--cyan);margin-right:6px}
-    section{padding:96px 0;position:relative}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}.section-head h2{font-size:clamp(32px,4vw,52px);line-height:1.15;margin:0;letter-spacing:-.035em}.section-head p{max-width:570px;margin:0;color:var(--muted)}
-    .kicker{color:var(--cyan);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:12px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{position:relative;border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,33,53,.78),rgba(9,20,34,.86));border-radius:var(--radius);padding:28px;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.12);transition:.3s}.card:hover{transform:translateY(-7px);border-color:rgba(78,221,255,.32);box-shadow:0 24px 70px rgba(0,0,0,.28)}
-    .card:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-55px;top:-60px;background:var(--glow,var(--cyan));filter:blur(48px);opacity:.13}
-    .icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(73,197,255,.1);border:1px solid rgba(83,220,255,.16);font-size:25px;margin-bottom:20px}.card h3{margin:0 0 10px;font-size:21px}.card p{margin:0;color:var(--muted);font-size:15px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{font-size:12px;color:#bdd0e3;border:1px solid var(--line);padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.025)}
-    .solutions{display:grid;grid-template-columns:1fr 1fr;gap:22px}.solution{min-height:330px;border-radius:28px;border:1px solid var(--line);padding:34px;background:var(--panel);position:relative;overflow:hidden}.solution h3{font-size:28px;margin:0 0 12px}.solution p{color:var(--muted);max-width:540px}.solution ul{padding:0;margin:25px 0 0;list-style:none;display:grid;gap:10px}.solution li{display:flex;gap:10px;align-items:flex-start;color:#d5e2f0}.solution .art{position:absolute;right:-10px;bottom:-18px;width:210px;height:160px;opacity:.55}.solution.wide{grid-column:1/-1;min-height:300px}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step{padding:25px 20px;border-radius:20px;border:1px solid var(--line);background:rgba(13,27,45,.72);position:relative}.step:not(:last-child):after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:2;color:#5fdfff}.step span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(67,231,255,.2),rgba(156,108,255,.2));color:#aeefff;font-weight:800}.step h3{font-size:18px;margin:15px 0 8px}.step p{font-size:14px;color:var(--muted);margin:0}
-    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}.about-panel{height:430px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(34,67,99,.4),rgba(10,23,39,.9));position:relative;overflow:hidden;display:grid;place-items:center}.about-panel svg{width:78%;height:78%}.about-copy h2{font-size:clamp(34px,4vw,52px);line-height:1.15;margin:8px 0 20px}.about-copy p{color:var(--muted)}
-    .principles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}.principle{border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(255,255,255,.025)}.principle b{display:block;color:#e9f8ff;margin-bottom:4px}.principle small{color:var(--muted)}
-    .contact-wrap{border:1px solid rgba(92,214,255,.22);background:linear-gradient(135deg,rgba(14,42,65,.9),rgba(28,18,54,.85));border-radius:32px;padding:50px;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:40px;box-shadow:var(--shadow);overflow:hidden;position:relative}.contact-wrap:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:var(--cyan);filter:blur(100px);opacity:.08;right:-60px;top:-120px}.contact-wrap h2{font-size:clamp(34px,4vw,54px);line-height:1.14;margin:0 0 16px}.contact-wrap p{color:#b5c7d9;margin:0;max-width:620px}.contact-list{display:grid;gap:12px;position:relative}.contact-item{padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(4,12,23,.36)}.contact-item small{display:block;color:#8fa4bc}.contact-item b{font-size:17px}
-    footer{border-top:1px solid var(--line);padding:30px 0;color:#8398af;font-size:14px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:18px}.footer-links a:hover{color:#dff8ff}
-    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
-    @media(max-width:980px){.hero-grid,.about,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:55px}.visual{min-height:450px}.cards{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.step:not(:last-child):after{display:none}.solutions{grid-template-columns:1fr}.solution.wide{grid-column:auto}.contact-wrap{padding:38px}.about-panel{height:360px}}
-    @media(max-width:760px){.container{width:min(100% - 28px,1180px)}.nav{height:68px}.navlinks{display:none;position:absolute;top:68px;left:14px;right:14px;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:#0b1728;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:13px 14px}.nav-cta{text-align:center;margin-top:4px}.menu{display:block}.hero{min-height:auto;padding:55px 0 40px}.hero-grid{gap:20px}h1{font-size:47px}.hero p{font-size:17px}.visual{min-height:390px;transform:scale(.9)}section{padding:72px 0}.section-head{display:block}.section-head p{margin-top:15px}.cards,.flow,.principles{grid-template-columns:1fr}.solutions{gap:16px}.solution,.card{padding:24px}.solution{min-height:350px}.solution .art{opacity:.35}.about-panel{height:300px}.contact-wrap{padding:30px 24px}.footer-row{display:block}.footer-links{margin-top:12px}}
-    @media(max-width:430px){h1{font-size:40px}.visual{margin-left:-16px;margin-right:-16px;transform:scale(.82)}.node{font-size:11px;padding:8px 10px}.contact-list{gap:9px}}
+    button,input,textarea{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(232,234,240,.75);
+    }
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:900;letter-spacing:.03em}
+    .brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 26px rgba(99,91,255,.28);color:#fff}
+    .brand-mark svg{width:24px;height:24px}
+    .navlinks{display:flex;align-items:center;gap:28px;color:#475467;font-size:15px}
+    .navlinks a:hover{color:var(--brand)}
+    .nav-cta{padding:11px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:800}
+    .menu{display:none;border:0;background:none;font-size:26px;color:var(--ink);cursor:pointer}
+
+    .hero{
+      position:relative;
+      padding:82px 0 70px;
+      background:
+        radial-gradient(circle at 12% 12%,rgba(99,91,255,.14),transparent 28%),
+        radial-gradient(circle at 88% 12%,rgba(255,122,69,.12),transparent 26%),
+        linear-gradient(180deg,#fff 0%,#fbfaff 100%);
+      overflow:hidden;
+    }
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(10px);opacity:.45}
+    .hero:before{width:180px;height:180px;background:#eeeaff;right:-60px;top:80px}
+    .hero:after{width:120px;height:120px;background:#fff1e9;left:-45px;bottom:30px}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:64px;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#f0efff;color:#4d47d6;font-size:14px;font-weight:800}
+    .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#635bff;box-shadow:0 0 0 5px rgba(99,91,255,.10)}
+    h1{font-size:clamp(42px,6.3vw,72px);line-height:1.08;letter-spacing:-.045em;margin:22px 0 22px}
+    h1 .gradient{background:linear-gradient(110deg,var(--brand),var(--brand2) 48%,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy{font-size:20px;color:#475467;max-width:670px;margin:0 0 30px}
+    .hero-copy strong{color:var(--ink)}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 23px;border-radius:14px;font-weight:900;border:1px solid transparent;transition:.2s;cursor:pointer}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 14px 34px rgba(99,91,255,.28)}
+    .btn-secondary{background:#fff;border-color:var(--line);box-shadow:0 10px 28px rgba(26,32,44,.06)}
+    .hero-points{display:flex;gap:18px;flex-wrap:wrap;color:#667085;font-size:14px}
+    .hero-points span{display:flex;align-items:center;gap:7px}
+    .check{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:#eafaf4;color:#0f9b72;font-size:12px;font-weight:900}
+
+    .demo-wrap{position:relative}
+    .phone-card{
+      width:min(430px,100%);
+      margin-left:auto;
+      border:1px solid #e9e7ff;
+      border-radius:30px;
+      background:rgba(255,255,255,.94);
+      box-shadow:0 30px 80px rgba(63,53,126,.17);
+      padding:18px;
+      transform:rotate(1.2deg);
+    }
+    .phone-top{display:flex;align-items:center;justify-content:space-between;padding:5px 6px 15px}
+    .person{display:flex;align-items:center;gap:10px;font-weight:850}
+    .avatar{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,#dcd8ff,#ffd9c8);display:grid;place-items:center;font-size:20px}
+    .online{font-size:12px;color:#12a878}
+    .chat{background:#f7f8fc;border-radius:22px;padding:20px 16px;min-height:390px}
+    .msg{display:flex;margin:0 0 15px;animation:rise .7s ease both}
+    .msg.me{justify-content:flex-end;animation-delay:.08s}
+    .msg:nth-child(2){animation-delay:.18s}.msg:nth-child(3){animation-delay:.3s}.msg:nth-child(4){animation-delay:.42s}
+    .bubble{max-width:86%;padding:12px 15px;border-radius:16px;background:#fff;box-shadow:0 7px 20px rgba(27,32,53,.06);font-size:15px}
+    .me .bubble{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-bottom-right-radius:5px}
+    .msg:not(.me) .bubble{border-bottom-left-radius:5px}
+    .answer-list{margin:8px 0 0;padding:0;list-style:none;color:#475467;font-size:14px}
+    .answer-list li{margin:5px 0;display:flex;gap:7px}
+    .mini-cta{margin-top:14px;background:#fff;border:1px solid #e4e1ff;color:var(--brand);font-weight:850;border-radius:12px;padding:10px 12px;text-align:center}
+    .float-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:13px 16px;font-size:14px;font-weight:800}
+    .float-card.one{left:-35px;top:64px;transform:rotate(-5deg)}
+    .float-card.two{right:-28px;bottom:50px;transform:rotate(4deg)}
+    .float-card b{display:block;color:var(--brand);font-size:18px}
+    @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    section{padding:92px 0}
+    .section-head{max-width:760px;margin:0 auto 46px;text-align:center}
+    .section-kicker{font-weight:900;color:var(--brand);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+    h2{font-size:clamp(32px,4vw,48px);line-height:1.18;letter-spacing:-.03em;margin:10px 0 14px}
+    .section-head p{font-size:18px;color:var(--muted);margin:0}
+
+    .pain{background:#fff}
+    .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .pain-card{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff;transition:.25s}
+    .pain-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#ddd9ff}
+    .pain-icon{font-size:28px;margin-bottom:12px}
+    .pain-card h3{margin:0 0 8px;font-size:19px}
+    .pain-card p{margin:0;color:var(--muted);font-size:15px}
+
+    .solutions{background:var(--soft)}
+    .solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .solution-card{position:relative;overflow:hidden;border-radius:24px;padding:27px;background:#fff;border:1px solid rgba(99,91,255,.10);box-shadow:0 12px 34px rgba(52,49,91,.06)}
+    .solution-card:before{content:"";position:absolute;width:110px;height:110px;border-radius:50%;right:-42px;top:-45px;background:var(--glow,#eeeaff)}
+    .solution-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:var(--iconbg,#f0efff);position:relative}
+    .solution-card h3{font-size:21px;margin:18px 0 8px}
+    .solution-card p{color:var(--muted);margin:0 0 16px}
+    .tag-list{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:13px;padding:6px 9px;border-radius:9px;background:#f7f8fb;color:#475467}
+
+    .chooser{background:#fff}
+    .chooser-box{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;background:linear-gradient(135deg,#1d2035,#2d275d);border-radius:30px;padding:38px;color:#fff;box-shadow:0 30px 80px rgba(31,32,70,.18)}
+    .chooser-box h2{margin-top:0}
+    .chooser-box p{color:#cfd1e8}
+    .choice-list{display:grid;gap:12px;margin-top:24px}
+    .choice{width:100%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;border-radius:15px;padding:15px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.2s}
+    .choice:hover,.choice.active{background:#fff;color:#24223c;border-color:#fff;transform:translateX(5px)}
+    .choice strong{font-size:16px}
+    .choice small{display:block;opacity:.7;margin-top:2px}
+    .result{background:#fff;color:var(--ink);border-radius:23px;padding:28px;min-height:390px;display:flex;flex-direction:column;justify-content:space-between}
+    .result-label{display:inline-flex;padding:6px 10px;background:#f1efff;color:var(--brand);font-size:13px;font-weight:850;border-radius:999px}
+    .result h3{font-size:27px;margin:15px 0 10px}
+    .result p{color:var(--muted);margin:0 0 18px}
+    .result ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .result li{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border-radius:12px;background:#f8f8fb;color:#475467}
+    .result-note{margin-top:18px;padding:13px 14px;border-radius:12px;background:#fff7ef;color:#8b4a20;font-size:14px}
+
+    .process{background:linear-gradient(180deg,#fff,#fffaf7)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+    .step{position:relative;border:1px solid var(--line);background:#fff;border-radius:22px;padding:27px 23px}
+    .step-num{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;display:grid;place-items:center;font-size:18px;font-weight:900;box-shadow:0 10px 24px rgba(99,91,255,.22)}
+    .step h3{font-size:20px;margin:17px 0 8px}
+    .step p{margin:0;color:var(--muted);font-size:15px}
+    .plain-badge{display:inline-flex;margin-top:14px;color:#0c8b68;background:#eafaf4;border-radius:9px;padding:5px 8px;font-size:12px;font-weight:800}
+
+    .promise{background:#fff}
+    .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .promise-card{border-radius:24px;padding:30px;border:1px solid var(--line);display:flex;gap:18px;align-items:flex-start;background:#fff}
+    .promise-card:nth-child(1){background:#faf9ff}.promise-card:nth-child(2){background:#fffaf7}.promise-card:nth-child(3){background:#f7fffc}.promise-card:nth-child(4){background:#f8fbff}
+    .promise-icon{font-size:30px;line-height:1}
+    .promise-card h3{margin:0 0 7px;font-size:20px}
+    .promise-card p{margin:0;color:var(--muted)}
+
+    .faq{background:#f8f8fb}
+    .faq-list{max-width:860px;margin:auto;display:grid;gap:12px}
+    details{background:#fff;border:1px solid var(--line);border-radius:17px;padding:0 20px;box-shadow:0 5px 18px rgba(20,25,45,.03)}
+    summary{cursor:pointer;list-style:none;padding:19px 0;font-weight:850;display:flex;justify-content:space-between;gap:20px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";font-size:23px;color:var(--brand);font-weight:500}
+    details[open] summary:after{content:"−"}
+    details p{color:var(--muted);margin:0;padding:0 0 19px}
+
+    .contact{padding:92px 0 110px;background:#fff}
+    .contact-box{position:relative;overflow:hidden;border-radius:32px;background:linear-gradient(135deg,#655df6,#8b5cf6 54%,#ff7a45);color:#fff;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center;box-shadow:0 32px 80px rgba(99,91,255,.24)}
+    .contact-box:after{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.18);border-radius:50%;right:-120px;top:-150px;box-shadow:0 0 0 55px rgba(255,255,255,.05),0 0 0 110px rgba(255,255,255,.04)}
+    .contact-copy,.contact-card{position:relative;z-index:1}
+    .contact-copy h2{font-size:clamp(34px,5vw,55px);margin:0 0 14px}
+    .contact-copy p{font-size:18px;color:#f1efff;margin:0}
+    .contact-card{background:rgba(255,255,255,.96);color:var(--ink);border-radius:22px;padding:24px}
+    .contact-row{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}
+    .contact-row:last-of-type{border-bottom:0}
+    .contact-row .ci{width:40px;height:40px;border-radius:12px;background:#f1efff;display:grid;place-items:center}
+    .contact-row small{display:block;color:var(--muted)}
+    .contact-row strong{font-size:17px}
+    .contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}
+    .contact-actions a{text-align:center;border-radius:12px;padding:12px 10px;font-weight:850}
+    .call{background:var(--brand);color:#fff}.mail{background:#f2f3f7;color:#344054}
+
+    footer{border-top:1px solid var(--line);padding:28px 0;color:#667085;font-size:14px}
+    .footer-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .mobile-bar{display:none}
+
+    @media(max-width:980px){
+      .hero-grid,.chooser-box,.contact-box{grid-template-columns:1fr}
+      .hero-grid{gap:44px}.phone-card{margin:auto}.float-card.one{left:0}.float-card.two{right:0}
+      .pain-grid,.steps{grid-template-columns:repeat(2,1fr)}
+      .solution-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-box{padding:42px}
+    }
+    @media(max-width:760px){
+      .navlinks{display:none;position:absolute;left:20px;right:20px;top:67px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}
+      .navlinks.open{display:flex}.navlinks a{padding:11px 8px}.nav-cta{text-align:center;margin-top:6px}.menu{display:block}
+      .hero{padding:56px 0 58px}.hero-copy{font-size:18px}.hero-points{gap:10px 16px}
+      section{padding:72px 0}.pain-grid,.solution-grid,.steps,.promise-grid{grid-template-columns:1fr}
+      .chooser-box{padding:22px}.result{min-height:auto}.contact-box{padding:30px 22px}.contact-actions{grid-template-columns:1fr}
+      .float-card{display:none}.phone-card{transform:none}.chat{min-height:350px}
+      .mobile-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;padding:8px;gap:8px;box-shadow:0 15px 40px rgba(29,32,52,.2)}
+      .mobile-bar a{text-align:center;padding:11px;border-radius:11px;font-weight:850}.mobile-bar a:first-child{background:#f1efff;color:var(--brand)}.mobile-bar a:last-child{background:var(--brand);color:#fff}
+      footer{padding-bottom:96px}
+    }
+    @media(max-width:480px){
+      .container{width:min(100% - 28px,1160px)}
+      h1{font-size:42px}.hero-actions .btn{width:100%}.phone-card{padding:12px;border-radius:24px}.chat{padding:16px 12px}
+      .section-head{text-align:left}.section-head p{font-size:16px}.contact-copy h2{font-size:36px}
+    }
   </style>
 </head>
 <body>
-  <div class="grid-bg"></div><div class="orb a"></div><div class="orb b"></div>
-  <header class="topbar" id="topbar">
+  <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#home" aria-label="贝尼科技首页">
-        <span class="logo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h7.2c3.3 0 5.3 1.5 5.3 4.1 0 1.5-.7 2.6-1.9 3.3 1.9.6 3 1.9 3 3.8 0 3-2.3 4.8-6.2 4.8H5V4Z" stroke="#031019" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.5 8h3.7c1 0 1.7.4 1.7 1.2s-.7 1.3-1.7 1.3H8.5V8Zm0 6h4.3c1.2 0 1.9.4 1.9 1.3s-.7 1.4-1.9 1.4H8.5V14Z" fill="#031019"/></svg></span>
+      <a class="brand" href="#top" aria-label="贝尼科技首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 4h7.2a4.3 4.3 0 0 1 0 8.6H6V4Z" stroke="currentColor" stroke-width="2.1"/><path d="M6 12.6h8.2a3.7 3.7 0 1 1 0 7.4H6v-7.4Z" stroke="currentColor" stroke-width="2.1"/></svg>
+        </span>
         <span>贝尼科技</span>
       </a>
       <nav class="navlinks" id="navlinks">
-        <a href="#services">技术服务</a><a href="#solutions">解决方案</a><a href="#process">合作流程</a><a href="#about">关于我们</a><a class="nav-cta" href="#contact">项目咨询</a>
+        <a href="#problems">你遇到的问题</a>
+        <a href="#solutions">我们能做什么</a>
+        <a href="#process">怎么合作</a>
+        <a href="#faq">常见问题</a>
+        <a class="nav-cta" href="#contact">说说你的想法</a>
       </nav>
-      <button class="menu" id="menu" aria-label="打开菜单" aria-expanded="false">☰</button>
+      <button class="menu" id="menu" aria-label="打开导航">☰</button>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
+  <main id="top">
+    <section class="hero">
       <div class="container hero-grid">
-        <div class="reveal show">
-          <div class="eyebrow"><span class="dot"></span>AI · SOFTWARE · CLOUD</div>
-          <h1>用技术把想法<br><span class="gradient-text">真正做成产品</span></h1>
-          <p>贝尼科技专注于 AI 自动化、微信生态、移动 App、企业管理系统与云端部署，为企业提供从需求梳理、产品设计、研发测试到上线运维的一站式技术服务。</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#contact">立即咨询 <span>→</span></a>
-            <a class="btn btn-outline" href="#services">查看服务能力</a>
+        <div>
+          <div class="eyebrow"><span class="dot"></span>专为不懂技术的人提供软件服务</div>
+          <h1>不懂代码，也能把想法<br><span class="gradient">做成真正能用的产品</span></h1>
+          <p class="hero-copy">你只需要告诉我们：<strong>“我想做一个什么生意”</strong>。页面怎么画、功能怎么定、服务器怎么弄、怎么上线，交给贝尼科技。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">💬 我有个想法，先聊聊</a>
+            <a class="btn btn-secondary" href="#solutions">👀 先看看能做什么</a>
           </div>
-          <div class="trust"><span><b class="check">✓</b> 全端产品交付</span><span><b class="check">✓</b> 可持续迭代</span><span><b class="check">✓</b> 上线部署支持</span></div>
-        </div>
-        <div class="visual reveal">
-          <div class="core">
-            <div class="chip"><strong>BN</strong><small>TECH CORE</small></div>
-            <div class="node n1"><b>AI</b>智能自动化</div>
-            <div class="node n2"><b>APP</b>iOS / Android</div>
-            <div class="node n3"><b>WEB</b>小程序 / H5</div>
-            <div class="node n4"><b>CLOUD</b>部署与运维</div>
+          <div class="hero-points">
+            <span><i class="check">✓</i>全程说人话</span>
+            <span><i class="check">✓</i>先看页面再开发</span>
+            <span><i class="check">✓</i>从想法陪到上线</span>
+            <span><i class="check">✓</i>上线后可继续维护</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-head reveal"><div><div class="kicker">Core Services</div><h2>覆盖产品全生命周期的<br>技术服务能力</h2></div><p>不只完成页面和功能，更关注业务流程、数据安全、系统稳定性与后续迭代成本，让每一套系统都能长期使用。</p></div>
-        <div class="cards">
-          <article class="card reveal" style="--glow:#43e7ff"><div class="icon">◈</div><h3>AI 智能与自动化</h3><p>构建 AI 客服、内容生成、销售辅助、工作流自动化、数据分析和企业知识库，让重复工作自动完成。</p><div class="tags"><span class="tag">智能体</span><span class="tag">自动化工作流</span><span class="tag">知识库</span></div></article>
-          <article class="card reveal" style="--glow:#5c7cff"><div class="icon">▣</div><h3>小程序与微信生态</h3><p>提供微信小程序、公众号网页授权、支付、消息通知、会员体系及运营后台的一体化开发。</p><div class="tags"><span class="tag">微信小程序</span><span class="tag">公众号 H5</span><span class="tag">支付接入</span></div></article>
-          <article class="card reveal" style="--glow:#9c6cff"><div class="icon">◉</div><h3>移动 App 开发</h3><p>支持 iOS、Android 及跨端应用开发，覆盖登录、定位、拍照上传、推送、版本更新与应用商店发布。</p><div class="tags"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">TestFlight</span></div></article>
-          <article class="card reveal" style="--glow:#5ff0b0"><div class="icon">⌘</div><h3>企业管理系统</h3><p>围绕订单、客户、员工、财务、权限、分佣和报表打造可配置的企业运营管理平台。</p><div class="tags"><span class="tag">CRM</span><span class="tag">ERP</span><span class="tag">数据大屏</span></div></article>
-          <article class="card reveal" style="--glow:#ffb45c"><div class="icon">◇</div><h3>定制软件研发</h3><p>从零搭建符合实际业务的系统，也可接手现有项目进行功能升级、性能优化和架构重构。</p><div class="tags"><span class="tag">需求分析</span><span class="tag">系统重构</span><span class="tag">接口集成</span></div></article>
-          <article class="card reveal" style="--glow:#ff6fae"><div class="icon">☁</div><h3>云部署与运维</h3><p>完成服务器、数据库、Redis、Nginx、HTTPS、对象存储、备份、监控和自动化发布配置。</p><div class="tags"><span class="tag">云服务器</span><span class="tag">DevOps</span><span class="tag">安全与备份</span></div></article>
+        <div class="demo-wrap" aria-label="需求沟通示例">
+          <div class="float-card one">不懂技术？<b>完全没关系</b></div>
+          <div class="phone-card">
+            <div class="phone-top">
+              <div class="person"><span class="avatar">👨‍💻</span><span>贝尼产品顾问<br><small class="online">● 在线沟通</small></span></div>
+              <span>•••</span>
+            </div>
+            <div class="chat">
+              <div class="msg me"><div class="bubble">我不懂编程，想做一个上门服务小程序，可以吗？</div></div>
+              <div class="msg"><div class="bubble">当然可以。你只要说清楚业务怎么赚钱，技术部分我们来处理。</div></div>
+              <div class="msg me"><div class="bubble">我希望客户下单，师傅接单，平台还能抽成。</div></div>
+              <div class="msg"><div class="bubble">明白了，你需要：
+                <ul class="answer-list">
+                  <li>✓ 客户预约与在线下单</li>
+                  <li>✓ 师傅接单和订单管理</li>
+                  <li>✓ 平台后台和分佣结算</li>
+                  <li>✓ 手机端直接操作</li>
+                </ul>
+                <div class="mini-cta">先给你画一版页面效果</div>
+              </div></div>
+            </div>
+          </div>
+          <div class="float-card two">你的任务<b>只负责提想法</b></div>
         </div>
       </div>
     </section>
 
-    <section id="solutions">
+    <section class="pain" id="problems">
       <div class="container">
-        <div class="section-head reveal"><div><div class="kicker">Solutions</div><h2>围绕业务结果设计系统</h2></div><p>把复杂需求拆解为清晰、可落地、可测试的产品模块，兼顾快速上线和长期扩展。</p></div>
-        <div class="solutions">
-          <article class="solution reveal"><h3>本地生活与上门服务平台</h3><p>适用于家政、按摩、维修、美业等上门服务场景，打通用户端、服务人员端、管理后台和订单财务系统。</p><ul><li><span class="check">✓</span> 服务项目、技师与门店管理</li><li><span class="check">✓</span> 定位、派单、抢单与履约流程</li><li><span class="check">✓</span> 支付、分佣、结算与售后</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><circle cx="109" cy="81" r="58" stroke="#43e7ff" stroke-opacity=".55"/><circle cx="109" cy="81" r="35" stroke="#9c6cff" stroke-opacity=".7" stroke-dasharray="5 7"/><path d="M109 28v106M56 81h106" stroke="#5c7cff" stroke-opacity=".35"/><circle cx="109" cy="81" r="9" fill="#43e7ff" fill-opacity=".8"/></svg></article>
-          <article class="solution reveal"><h3>AI 营销与内容自动化</h3><p>面向获客、宣传和销售团队，自动完成选题、文案、海报素材、客户跟进与数据汇总。</p><ul><li><span class="check">✓</span> 多平台内容生产与排期</li><li><span class="check">✓</span> 潜客识别与销售辅助</li><li><span class="check">✓</span> 运营数据自动汇总</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><path d="M32 123 80 73l31 25 70-67" stroke="#43e7ff" stroke-width="4" stroke-linecap="round"/><path d="m155 31 26 0 0 26" stroke="#9c6cff" stroke-width="4"/><rect x="31" y="23" width="158" height="113" rx="17" stroke="#5c7cff" stroke-opacity=".4"/></svg></article>
-          <article class="solution wide reveal"><h3>企业数字化运营中台</h3><p>统一管理客户、订单、员工、权限、财务和经营数据，减少多个系统之间的重复录入，让管理者实时掌握业务状态。</p><ul><li><span class="check">✓</span> 多角色与多组织权限体系</li><li><span class="check">✓</span> 业务流程、审批和消息通知</li><li><span class="check">✓</span> 数据报表、经营分析和开放 API</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><rect x="28" y="30" width="164" height="104" rx="18" stroke="#43e7ff" stroke-opacity=".45"/><rect x="46" y="49" width="45" height="67" rx="10" fill="#43e7ff" fill-opacity=".14"/><rect x="101" y="49" width="72" height="16" rx="8" fill="#9c6cff" fill-opacity=".28"/><rect x="101" y="74" width="72" height="16" rx="8" fill="#5c7cff" fill-opacity=".22"/><rect x="101" y="99" width="47" height="16" rx="8" fill="#43e7ff" fill-opacity=".2"/></svg></article>
+        <div class="section-head">
+          <div class="section-kicker">你是不是也这样</div>
+          <h2>有想法，但卡在“我不懂技术”</h2>
+          <p>很多好生意，不是输在想法，而是没人把它做出来。</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card"><div class="pain-icon">🤯</div><h3>听不懂技术名词</h3><p>别人一上来就讲服务器、接口、数据库，越听越迷糊。</p></article>
+          <article class="pain-card"><div class="pain-icon">💸</div><h3>怕花钱做错东西</h3><p>担心钱花了，最后做出来和自己想的完全不一样。</p></article>
+          <article class="pain-card"><div class="pain-icon">🧩</div><h3>不知道需要哪些功能</h3><p>只知道想解决什么问题，但不知道页面和流程该怎么设计。</p></article>
+          <article class="pain-card"><div class="pain-icon">🚧</div><h3>不知道怎么上线</h3><p>小程序审核、App 上架、服务器、域名，听着就复杂。</p></article>
         </div>
       </div>
     </section>
 
-    <section id="process">
+    <section class="solutions" id="solutions">
       <div class="container">
-        <div class="section-head reveal"><div><div class="kicker">Delivery Process</div><h2>清晰透明的项目交付流程</h2></div><p>每个阶段都有可确认的成果和验收标准，降低沟通成本，也避免做到后期才发现理解偏差。</p></div>
-        <div class="flow">
-          <article class="step reveal"><span>01</span><h3>需求沟通</h3><p>确认目标、用户、场景、预算和上线计划。</p></article>
-          <article class="step reveal"><span>02</span><h3>产品方案</h3><p>梳理功能、流程、原型、技术架构与里程碑。</p></article>
-          <article class="step reveal"><span>03</span><h3>研发联调</h3><p>按模块开发，持续提供可查看、可测试的版本。</p></article>
-          <article class="step reveal"><span>04</span><h3>测试上线</h3><p>完成兼容、安全、性能测试与正式环境部署。</p></article>
-          <article class="step reveal"><span>05</span><h3>持续迭代</h3><p>根据真实业务反馈优化功能和运营效率。</p></article>
+        <div class="section-head">
+          <div class="section-kicker">别管技术叫什么</div>
+          <h2>你说想做什么，我们帮你选最合适的方式</h2>
+          <p>不需要先学编程，也不需要先弄懂“小程序、H5、App”到底有什么区别。</p>
+        </div>
+        <div class="solution-grid">
+          <article class="solution-card" style="--glow:#e8e5ff;--iconbg:#f0efff"><div class="solution-icon">📱</div><h3>预约、下单类</h3><p>适合上门服务、家政、按摩、美业、维修、陪诊、培训等业务。</p><div class="tag-list"><span class="tag">在线预约</span><span class="tag">订单管理</span><span class="tag">员工接单</span><span class="tag">平台抽成</span></div></article>
+          <article class="solution-card" style="--glow:#ffeadf;--iconbg:#fff2ea"><div class="solution-icon">🛍️</div><h3>卖货、会员类</h3><p>适合门店、电商、私域运营，把商品、客户和优惠活动放到手机里。</p><div class="tag-list"><span class="tag">商城</span><span class="tag">会员卡</span><span class="tag">优惠券</span><span class="tag">积分</span></div></article>
+          <article class="solution-card" style="--glow:#ddf8ed;--iconbg:#eafaf4"><div class="solution-icon">🤖</div><h3>AI 自动干活</h3><p>让 AI 帮你回复客户、整理资料、生成内容、做统计，减少重复工作。</p><div class="tag-list"><span class="tag">AI客服</span><span class="tag">自动写文案</span><span class="tag">自动整理</span><span class="tag">智能问答</span></div></article>
+          <article class="solution-card" style="--glow:#e0f2ff;--iconbg:#eaf6ff"><div class="solution-icon">🏢</div><h3>公司内部管理</h3><p>把订单、客户、员工、财务和库存集中管理，不再到处找表格。</p><div class="tag-list"><span class="tag">客户管理</span><span class="tag">员工管理</span><span class="tag">财务统计</span><span class="tag">库存</span></div></article>
+          <article class="solution-card" style="--glow:#f5e5ff;--iconbg:#f8efff"><div class="solution-icon">🚀</div><h3>自己的 App</h3><p>需要更完整的品牌体验，可以做 iPhone 和安卓 App，并协助发布上线。</p><div class="tag-list"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">消息通知</span><span class="tag">版本更新</span></div></article>
+          <article class="solution-card" style="--glow:#fff0cf;--iconbg:#fff7e6"><div class="solution-icon">✨</div><h3>有个新想法</h3><p>没有现成分类也没关系。把你的业务讲给我们，我们一起梳理成产品。</p><div class="tag-list"><span class="tag">需求梳理</span><span class="tag">页面设计</span><span class="tag">功能规划</span><span class="tag">上线方案</span></div></article>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container about">
-        <div class="about-panel reveal">
-          <svg viewBox="0 0 500 360" fill="none" aria-hidden="true">
-            <rect x="76" y="45" width="348" height="270" rx="34" stroke="#6be6ff" stroke-opacity=".35"/>
-            <path d="M120 252c48-78 83-105 132-67 46 36 77-65 129-84" stroke="url(#g)" stroke-width="9" stroke-linecap="round"/>
-            <circle cx="120" cy="252" r="14" fill="#43e7ff"/><circle cx="252" cy="185" r="14" fill="#6d91ff"/><circle cx="381" cy="101" r="14" fill="#a979ff"/>
-            <path d="M117 94h145M117 120h91" stroke="#a8bdd1" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"/>
-            <defs><linearGradient id="g" x1="120" y1="252" x2="381" y2="101" gradientUnits="userSpaceOnUse"><stop stop-color="#43e7ff"/><stop offset=".5" stop-color="#5c7cff"/><stop offset="1" stop-color="#9c6cff"/></linearGradient></defs>
-          </svg>
+    <section class="chooser">
+      <div class="container chooser-box">
+        <div>
+          <div class="section-kicker" style="color:#c9c5ff">点一下就能看懂</div>
+          <h2>你大概想做哪一种？</h2>
+          <p>不用回答专业问题，先选一个最接近的，我们用普通话告诉你大概需要什么。</p>
+          <div class="choice-list" id="choiceList">
+            <button class="choice active" data-key="service"><span><strong>上门服务 / 预约接单</strong><small>家政、美业、维修、技师等</small></span><span>→</span></button>
+            <button class="choice" data-key="shop"><span><strong>商城 / 会员 / 门店</strong><small>卖货、积分、优惠券、私域</small></span><span>→</span></button>
+            <button class="choice" data-key="ai"><span><strong>AI 帮我自动工作</strong><small>客服、文案、数据、流程</small></span><span>→</span></button>
+            <button class="choice" data-key="manage"><span><strong>公司内部管理系统</strong><small>客户、订单、员工、财务</small></span><span>→</span></button>
+          </div>
         </div>
-        <div class="about-copy reveal"><div class="kicker">About Beini</div><h2>做可靠、实用、可持续的技术产品</h2><p>贝尼科技以企业真实业务为出发点，强调产品可用性、系统稳定性和长期维护能力。我们愿意把复杂的技术问题讲清楚，把项目风险提前暴露，把每一项功能真正落到业务结果上。</p><div class="principles"><div class="principle"><b>业务优先</b><small>技术方案服务于实际经营目标。</small></div><div class="principle"><b>快速验证</b><small>先做可用版本，再用反馈持续优化。</small></div><div class="principle"><b>安全稳定</b><small>重视权限、数据、备份和上线质量。</small></div><div class="principle"><b>长期合作</b><small>支持后续迭代、运维和系统扩展。</small></div></div></div>
+        <div class="result" id="resultBox">
+          <div>
+            <span class="result-label">上门服务 / 预约接单</span>
+            <h3>你可能需要一套“客户下单 + 员工接单 + 后台管理”的系统</h3>
+            <p>客户在手机上下单，员工接单和更新进度，老板在后台看订单、人员和收入。</p>
+            <ul>
+              <li>📍 客户选择项目、时间和地址</li>
+              <li>📲 员工接单、到达、开始和完成服务</li>
+              <li>💰 平台设置价格、提成或分佣</li>
+              <li>📊 老板查看订单和经营数据</li>
+            </ul>
+            <div class="result-note">你不需要决定用小程序还是 App，我们会根据预算和使用场景帮你选。</div>
+          </div>
+          <a class="btn btn-primary" href="#contact" style="margin-top:22px">就想做这个，去聊聊</a>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="process" id="process">
       <div class="container">
-        <div class="contact-wrap reveal">
-          <div><div class="kicker">Start a Project</div><h2>有产品想法？<br>让我们一起把它做出来。</h2><p>无论是新项目从零开发、旧系统升级，还是 AI 自动化方案，都可以先沟通需求，再确定合适的实施方式。</p><div class="actions" style="margin-top:25px"><a class="btn btn-primary" href="mailto:871798974@qq.com?subject=%E8%B4%9D%E5%B0%BC%E7%A7%91%E6%8A%80%E9%A1%B9%E7%9B%AE%E5%92%A8%E8%AF%A2">发送项目需求</a><a class="btn btn-outline" href="tel:+8618306665450">电话咨询</a></div></div>
-          <div class="contact-list"><div class="contact-item"><small>联系电话</small><b>183 0666 5450</b></div><div class="contact-item"><small>电子邮箱</small><b>871798974@qq.com</b></div><div class="contact-item"><small>官方网站</small><b>beinikj.com</b></div><div class="contact-item"><small>服务方向</small><b>AI · 小程序 · App · 企业软件</b></div></div>
+        <div class="section-head">
+          <div class="section-kicker">合作非常简单</div>
+          <h2>你不用学技术，只需要参与 4 步</h2>
+          <p>每一步都能看到结果，确认没问题再往下走。</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-num">1</div><h3>你讲生意</h3><p>告诉我们你做什么、客户是谁、希望怎么赚钱，不用讲任何技术。</p><span class="plain-badge">只聊业务</span></article>
+          <article class="step"><div class="step-num">2</div><h3>我们画给你看</h3><p>先把页面和使用流程做出来，让你直观看到以后是什么样。</p><span class="plain-badge">先看效果</span></article>
+          <article class="step"><div class="step-num">3</div><h3>边做边确认</h3><p>按阶段交付，你可以实际点、实际试，发现问题及时调整。</p><span class="plain-badge">过程透明</span></article>
+          <article class="step"><div class="step-num">4</div><h3>帮你上线</h3><p>服务器、域名、小程序审核、App 发布等上线工作由我们协助完成。</p><span class="plain-badge">交付能使用</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="promise">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">我们更懂“小白”的担心</div>
+          <h2>不是把代码扔给你，而是把事情做明白</h2>
+          <p>你最终拿到的不是一堆看不懂的文件，而是一套能操作、能演示、能继续使用的产品。</p>
+        </div>
+        <div class="promise-grid">
+          <article class="promise-card"><div class="promise-icon">🗣️</div><div><h3>沟通不说黑话</h3><p>能用一句人话说明的，绝不用一串技术名词让你更糊涂。</p></div></article>
+          <article class="promise-card"><div class="promise-icon">👁️</div><div><h3>重要环节先确认</h3><p>页面、流程和关键功能先给你看，减少“做完才发现不对”。</p></div></article>
+          <article class="promise-card"><div class="promise-icon">🧭</div><div><h3>告诉你下一步做什么</h3><p>需要准备账号、资料或认证时，我们会按步骤说明，不让你自己乱找。</p></div></article>
+          <article class="promise-card"><div class="promise-icon">🛠️</div><div><h3>上线后还能继续改</h3><p>业务变化时，可以继续增加功能、调整页面和维护运行环境。</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">小白最常问</div>
+          <h2>这些问题你可能也想知道</h2>
+        </div>
+        <div class="faq-list">
+          <details open><summary>我完全不懂编程，真的可以做吗？</summary><p>可以。你负责说清楚业务目标，例如“客户怎么下单、员工怎么服务、老板怎么赚钱”，我们负责把它整理成页面、功能和上线方案。</p></details>
+          <details><summary>我连要做小程序还是 App 都不知道怎么办？</summary><p>这很正常。我们会根据你的客户使用习惯、预算、功能复杂度和上线速度来建议，不需要你提前做技术选择。</p></details>
+          <details><summary>怎么避免做出来和我想的不一样？</summary><p>先梳理流程并展示页面效果，再分阶段开发和确认。你会在过程中不断看到真实结果，而不是等到最后一次性验收。</p></details>
+          <details><summary>除了开发，还能帮忙上线吗？</summary><p>可以协助处理服务器部署、域名、HTTPS、小程序发布、iOS TestFlight/App Store、安卓打包等上线环节。具体范围会在合作前说明。</p></details>
+          <details><summary>我现在只有一个模糊想法，也能聊吗？</summary><p>可以。很多项目一开始都只有一句话。先把目标客户、使用场景和赚钱方式聊清楚，再逐步确定产品。</p></details>
+          <details><summary>价格怎么确定？</summary><p>软件价格取决于功能数量、页面复杂度、是否需要支付、定位、分佣、消息通知、App 上架等。先把需求拆清楚，才能给出更合理的方案。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-box">
+        <div class="contact-copy">
+          <div class="section-kicker" style="color:#fff;opacity:.85">先聊想法，不考你技术</div>
+          <h2>一句话也可以，告诉我们你想做什么</h2>
+          <p>例如：“我想做一个家政预约平台”“我想让 AI 自动回复客户”“我想把公司表格做成系统”。</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-row"><span class="ci">📞</span><div><small>电话 / 业务咨询</small><strong>18306665450</strong></div></div>
+          <div class="contact-row"><span class="ci">✉️</span><div><small>电子邮箱</small><strong>871798974@qq.com</strong></div></div>
+          <div class="contact-row"><span class="ci">🌐</span><div><small>公司名称</small><strong>贝尼科技</strong></div></div>
+          <div class="contact-actions">
+            <a class="call" href="tel:+8618306665450">直接打电话</a>
+            <a class="mail" href="mailto:871798974@qq.com?subject=%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91&body=%E6%88%91%E6%83%B3%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85%E6%98%AF%EF%BC%9A%0A%0A%E6%88%91%E7%9A%84%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%EF%BC%9A">发邮件描述想法</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="container footer-row"><div>© <span id="year"></span> 贝尼科技 Beini Technology. All rights reserved.</div><div class="footer-links"><a href="#services">技术服务</a><a href="#about">关于我们</a><a href="#contact">联系我们</a></div></div></footer>
+  <footer>
+    <div class="container footer-in">
+      <span>© 2026 贝尼科技 · 用听得懂的方式，把想法做成产品</span>
+      <span>小程序 · App · AI 自动化 · 企业管理系统</span>
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a href="tel:+8618306665450">📞 电话咨询</a>
+    <a href="#contact">💬 说说想法</a>
+  </div>
+
   <script>
-    const topbar=document.getElementById('topbar'),menu=document.getElementById('menu'),nav=document.getElementById('navlinks');
-    addEventListener('scroll',()=>topbar.classList.toggle('scrolled',scrollY>10));
-    menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'×':'☰'});
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    document.getElementById('year').textContent=new Date().getFullYear();
+    const menu = document.getElementById('menu');
+    const navlinks = document.getElementById('navlinks');
+    menu.addEventListener('click', () => navlinks.classList.toggle('open'));
+    navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlinks.classList.remove('open')));
+
+    const data = {
+      service:{label:'上门服务 / 预约接单',title:'你可能需要一套“客户下单 + 员工接单 + 后台管理”的系统',desc:'客户在手机上下单，员工接单和更新进度，老板在后台看订单、人员和收入。',items:['📍 客户选择项目、时间和地址','📲 员工接单、到达、开始和完成服务','💰 平台设置价格、提成或分佣','📊 老板查看订单和经营数据'],note:'你不需要决定用小程序还是 App，我们会根据预算和使用场景帮你选。'},
+      shop:{label:'商城 / 会员 / 门店',title:'你可能需要一个“商品销售 + 会员运营 + 门店管理”的平台',desc:'客户可以浏览商品、下单付款、领取优惠，老板可以管理商品、订单和会员。',items:['🛒 商品展示、购物车和订单','🎫 优惠券、积分和会员等级','🏪 单店或多门店管理','📈 销售和客户数据统计'],note:'可以先从简单商城开始，后续再增加会员、分销或门店功能。'},
+      ai:{label:'AI 自动干活',title:'你可能需要一个“帮员工省时间”的 AI 助手',desc:'把重复问答、内容生成、资料整理或数据处理交给 AI，让人专注更重要的工作。',items:['💬 自动回复常见客户问题','✍️ 自动生成文案、方案或表格','📚 根据公司资料进行智能问答','⚙️ 把多个重复步骤串成自动流程'],note:'先找出最浪费时间的一件事，从一个小流程开始最容易看到效果。'},
+      manage:{label:'公司内部管理系统',title:'你可能需要把“客户、订单、员工、财务”放进一个系统',desc:'减少微信群、纸张和多个 Excel 来回切换，让每个人知道自己该做什么。',items:['👥 客户和员工资料统一管理','📋 订单、任务和进度清楚可见','💵 收入、支出和业绩统计','🔐 不同岗位看到不同内容'],note:'通常先把现在使用的表格和流程给我们看，就能快速梳理第一版。'}
+    };
+    const resultBox = document.getElementById('resultBox');
+    document.querySelectorAll('.choice').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.choice').forEach(x => x.classList.remove('active'));
+      btn.classList.add('active');
+      const d = data[btn.dataset.key];
+      resultBox.innerHTML = `<div><span class="result-label">${d.label}</span><h3>${d.title}</h3><p>${d.desc}</p><ul>${d.items.map(x=>`<li>${x}</li>`).join('')}</ul><div class="result-note">${d.note}</div></div><a class="btn btn-primary" href="#contact" style="margin-top:22px">就想做这个，去聊聊</a>`;
+    }));
   </script>
 </body>
 </html>
