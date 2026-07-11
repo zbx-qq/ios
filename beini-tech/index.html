@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="贝尼科技专注于 AI 自动化、微信小程序、H5、iOS、Android、企业管理系统与云端部署，为企业提供从产品设计到上线运维的一站式技术服务。">
+  <meta name="keywords" content="贝尼科技,AI自动化,小程序开发,App开发,H5开发,企业软件,系统定制">
+  <meta name="theme-color" content="#07111f">
+  <title>贝尼科技｜AI 与软件定制开发</title>
+  <style>
+    :root{
+      --bg:#050b14;--bg2:#091321;--panel:rgba(15,29,48,.72);--panel2:#0f1d30;
+      --text:#eef6ff;--muted:#9db0c7;--line:rgba(155,190,225,.15);
+      --cyan:#43e7ff;--blue:#5c7cff;--purple:#9c6cff;--green:#5ff0b0;
+      --shadow:0 24px 80px rgba(0,0,0,.36);--radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);background:
+      radial-gradient(circle at 20% -10%,rgba(67,231,255,.15),transparent 32%),
+      radial-gradient(circle at 85% 10%,rgba(156,108,255,.15),transparent 28%),
+      linear-gradient(180deg,var(--bg),#07111e 45%,#050b14);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      line-height:1.65;overflow-x:hidden
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}
+    .grid-bg{position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+    .orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.14}.orb.a{width:300px;height:300px;background:var(--cyan);left:-120px;top:35%}.orb.b{width:360px;height:360px;background:var(--purple);right:-170px;top:54%}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(5,11,20,.68);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.3s}
+    .topbar.scrolled{border-color:var(--line);background:rgba(5,11,20,.9)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em;font-size:20px}
+    .logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue) 55%,var(--purple));box-shadow:0 8px 28px rgba(67,231,255,.2)}
+    .logo svg{width:24px;height:24px}
+    .navlinks{display:flex;gap:28px;align-items:center;color:#c9d7e8;font-size:15px}.navlinks a{transition:.2s}.navlinks a:hover{color:#fff}
+    .nav-cta,.btn-primary{background:linear-gradient(135deg,var(--cyan),#6d91ff 58%,var(--purple));color:#031019;font-weight:800;box-shadow:0 10px 30px rgba(73,179,255,.23)}
+    .nav-cta{padding:11px 18px;border-radius:999px}
+    .menu{display:none;background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
+    .hero{min-height:760px;display:grid;align-items:center;padding:80px 0 60px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:64px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid rgba(83,220,255,.25);background:rgba(39,120,150,.12);border-radius:999px;color:#bfefff;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+    .dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 6px rgba(95,240,176,.1)}
+    h1{font-size:clamp(46px,6.1vw,80px);line-height:1.08;letter-spacing:-.045em;margin:24px 0 22px}
+    .gradient-text{background:linear-gradient(100deg,#fff 10%,#80eaff 45%,#8ca2ff 72%,#c48bff);-webkit-background-clip:text;color:transparent}
+    .hero p{font-size:19px;color:var(--muted);max-width:680px;margin:0 0 32px}
+    .actions{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 21px;border-radius:14px;border:1px solid transparent;transition:.25s;cursor:pointer}.btn:hover{transform:translateY(-2px)}
+    .btn-outline{border-color:var(--line);background:rgba(255,255,255,.035);color:#eaf4ff}.btn-outline:hover{border-color:rgba(83,220,255,.45);background:rgba(83,220,255,.07)}
+    .trust{margin-top:34px;display:flex;gap:22px;flex-wrap:wrap;color:#b9c9db;font-size:14px}.trust span{display:flex;align-items:center;gap:8px}.check{color:var(--green)}
+    .visual{position:relative;min-height:520px;display:grid;place-items:center}
+    .core{width:min(390px,90vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,rgba(67,231,255,.24),rgba(92,124,255,.07) 45%,transparent 68%);border:1px solid rgba(108,210,255,.2);box-shadow:inset 0 0 80px rgba(76,145,255,.09),0 0 90px rgba(67,231,255,.08)}
+    .core:before,.core:after{content:"";position:absolute;border:1px solid rgba(129,189,255,.17);border-radius:50%;inset:-35px;animation:spin 22s linear infinite}.core:after{inset:42px;border-style:dashed;animation-direction:reverse;animation-duration:15s}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .chip{width:164px;height:164px;border-radius:36px;background:linear-gradient(145deg,rgba(32,55,82,.98),rgba(8,20,35,.98));border:1px solid rgba(113,203,255,.28);box-shadow:0 28px 80px rgba(0,0,0,.46),inset 0 0 35px rgba(67,231,255,.05);display:grid;place-items:center;position:relative;z-index:2}
+    .chip strong{font-size:44px;letter-spacing:-.06em;background:linear-gradient(135deg,var(--cyan),#fff 58%,#a989ff);-webkit-background-clip:text;color:transparent}
+    .chip small{position:absolute;bottom:28px;color:#8eb2cf;letter-spacing:.18em}
+    .node{position:absolute;padding:10px 14px;border-radius:13px;background:rgba(12,28,47,.86);border:1px solid var(--line);box-shadow:var(--shadow);font-size:13px;color:#d9e9f8;backdrop-filter:blur(12px)}
+    .n1{top:9%;left:2%}.n2{top:18%;right:-4%}.n3{bottom:18%;left:-3%}.n4{bottom:7%;right:6%}
+    .node b{color:var(--cyan);margin-right:6px}
+    section{padding:96px 0;position:relative}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}.section-head h2{font-size:clamp(32px,4vw,52px);line-height:1.15;margin:0;letter-spacing:-.035em}.section-head p{max-width:570px;margin:0;color:var(--muted)}
+    .kicker{color:var(--cyan);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,33,53,.78),rgba(9,20,34,.86));border-radius:var(--radius);padding:28px;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.12);transition:.3s}.card:hover{transform:translateY(-7px);border-color:rgba(78,221,255,.32);box-shadow:0 24px 70px rgba(0,0,0,.28)}
+    .card:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-55px;top:-60px;background:var(--glow,var(--cyan));filter:blur(48px);opacity:.13}
+    .icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(73,197,255,.1);border:1px solid rgba(83,220,255,.16);font-size:25px;margin-bottom:20px}.card h3{margin:0 0 10px;font-size:21px}.card p{margin:0;color:var(--muted);font-size:15px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{font-size:12px;color:#bdd0e3;border:1px solid var(--line);padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.025)}
+    .solutions{display:grid;grid-template-columns:1fr 1fr;gap:22px}.solution{min-height:330px;border-radius:28px;border:1px solid var(--line);padding:34px;background:var(--panel);position:relative;overflow:hidden}.solution h3{font-size:28px;margin:0 0 12px}.solution p{color:var(--muted);max-width:540px}.solution ul{padding:0;margin:25px 0 0;list-style:none;display:grid;gap:10px}.solution li{display:flex;gap:10px;align-items:flex-start;color:#d5e2f0}.solution .art{position:absolute;right:-10px;bottom:-18px;width:210px;height:160px;opacity:.55}.solution.wide{grid-column:1/-1;min-height:300px}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step{padding:25px 20px;border-radius:20px;border:1px solid var(--line);background:rgba(13,27,45,.72);position:relative}.step:not(:last-child):after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);z-index:2;color:#5fdfff}.step span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(67,231,255,.2),rgba(156,108,255,.2));color:#aeefff;font-weight:800}.step h3{font-size:18px;margin:15px 0 8px}.step p{font-size:14px;color:var(--muted);margin:0}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}.about-panel{height:430px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(34,67,99,.4),rgba(10,23,39,.9));position:relative;overflow:hidden;display:grid;place-items:center}.about-panel svg{width:78%;height:78%}.about-copy h2{font-size:clamp(34px,4vw,52px);line-height:1.15;margin:8px 0 20px}.about-copy p{color:var(--muted)}
+    .principles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}.principle{border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(255,255,255,.025)}.principle b{display:block;color:#e9f8ff;margin-bottom:4px}.principle small{color:var(--muted)}
+    .contact-wrap{border:1px solid rgba(92,214,255,.22);background:linear-gradient(135deg,rgba(14,42,65,.9),rgba(28,18,54,.85));border-radius:32px;padding:50px;display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:40px;box-shadow:var(--shadow);overflow:hidden;position:relative}.contact-wrap:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:var(--cyan);filter:blur(100px);opacity:.08;right:-60px;top:-120px}.contact-wrap h2{font-size:clamp(34px,4vw,54px);line-height:1.14;margin:0 0 16px}.contact-wrap p{color:#b5c7d9;margin:0;max-width:620px}.contact-list{display:grid;gap:12px;position:relative}.contact-item{padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(4,12,23,.36)}.contact-item small{display:block;color:#8fa4bc}.contact-item b{font-size:17px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#8398af;font-size:14px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:18px}.footer-links a:hover{color:#dff8ff}
+    .reveal{opacity:0;transform:translateY(24px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:980px){.hero-grid,.about,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:55px}.visual{min-height:450px}.cards{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}.step:not(:last-child):after{display:none}.solutions{grid-template-columns:1fr}.solution.wide{grid-column:auto}.contact-wrap{padding:38px}.about-panel{height:360px}}
+    @media(max-width:760px){.container{width:min(100% - 28px,1180px)}.nav{height:68px}.navlinks{display:none;position:absolute;top:68px;left:14px;right:14px;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:#0b1728;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.navlinks.open{display:flex}.navlinks a{padding:13px 14px}.nav-cta{text-align:center;margin-top:4px}.menu{display:block}.hero{min-height:auto;padding:55px 0 40px}.hero-grid{gap:20px}h1{font-size:47px}.hero p{font-size:17px}.visual{min-height:390px;transform:scale(.9)}section{padding:72px 0}.section-head{display:block}.section-head p{margin-top:15px}.cards,.flow,.principles{grid-template-columns:1fr}.solutions{gap:16px}.solution,.card{padding:24px}.solution{min-height:350px}.solution .art{opacity:.35}.about-panel{height:300px}.contact-wrap{padding:30px 24px}.footer-row{display:block}.footer-links{margin-top:12px}}
+    @media(max-width:430px){h1{font-size:40px}.visual{margin-left:-16px;margin-right:-16px;transform:scale(.82)}.node{font-size:11px;padding:8px 10px}.contact-list{gap:9px}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div><div class="orb a"></div><div class="orb b"></div>
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="贝尼科技首页">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h7.2c3.3 0 5.3 1.5 5.3 4.1 0 1.5-.7 2.6-1.9 3.3 1.9.6 3 1.9 3 3.8 0 3-2.3 4.8-6.2 4.8H5V4Z" stroke="#031019" stroke-width="2.2" stroke-linejoin="round"/><path d="M8.5 8h3.7c1 0 1.7.4 1.7 1.2s-.7 1.3-1.7 1.3H8.5V8Zm0 6h4.3c1.2 0 1.9.4 1.9 1.3s-.7 1.4-1.9 1.4H8.5V14Z" fill="#031019"/></svg></span>
+        <span>贝尼科技</span>
+      </a>
+      <nav class="navlinks" id="navlinks">
+        <a href="#services">技术服务</a><a href="#solutions">解决方案</a><a href="#process">合作流程</a><a href="#about">关于我们</a><a class="nav-cta" href="#contact">项目咨询</a>
+      </nav>
+      <button class="menu" id="menu" aria-label="打开菜单" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal show">
+          <div class="eyebrow"><span class="dot"></span>AI · SOFTWARE · CLOUD</div>
+          <h1>用技术把想法<br><span class="gradient-text">真正做成产品</span></h1>
+          <p>贝尼科技专注于 AI 自动化、微信生态、移动 App、企业管理系统与云端部署，为企业提供从需求梳理、产品设计、研发测试到上线运维的一站式技术服务。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">立即咨询 <span>→</span></a>
+            <a class="btn btn-outline" href="#services">查看服务能力</a>
+          </div>
+          <div class="trust"><span><b class="check">✓</b> 全端产品交付</span><span><b class="check">✓</b> 可持续迭代</span><span><b class="check">✓</b> 上线部署支持</span></div>
+        </div>
+        <div class="visual reveal">
+          <div class="core">
+            <div class="chip"><strong>BN</strong><small>TECH CORE</small></div>
+            <div class="node n1"><b>AI</b>智能自动化</div>
+            <div class="node n2"><b>APP</b>iOS / Android</div>
+            <div class="node n3"><b>WEB</b>小程序 / H5</div>
+            <div class="node n4"><b>CLOUD</b>部署与运维</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Core Services</div><h2>覆盖产品全生命周期的<br>技术服务能力</h2></div><p>不只完成页面和功能，更关注业务流程、数据安全、系统稳定性与后续迭代成本，让每一套系统都能长期使用。</p></div>
+        <div class="cards">
+          <article class="card reveal" style="--glow:#43e7ff"><div class="icon">◈</div><h3>AI 智能与自动化</h3><p>构建 AI 客服、内容生成、销售辅助、工作流自动化、数据分析和企业知识库，让重复工作自动完成。</p><div class="tags"><span class="tag">智能体</span><span class="tag">自动化工作流</span><span class="tag">知识库</span></div></article>
+          <article class="card reveal" style="--glow:#5c7cff"><div class="icon">▣</div><h3>小程序与微信生态</h3><p>提供微信小程序、公众号网页授权、支付、消息通知、会员体系及运营后台的一体化开发。</p><div class="tags"><span class="tag">微信小程序</span><span class="tag">公众号 H5</span><span class="tag">支付接入</span></div></article>
+          <article class="card reveal" style="--glow:#9c6cff"><div class="icon">◉</div><h3>移动 App 开发</h3><p>支持 iOS、Android 及跨端应用开发，覆盖登录、定位、拍照上传、推送、版本更新与应用商店发布。</p><div class="tags"><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">TestFlight</span></div></article>
+          <article class="card reveal" style="--glow:#5ff0b0"><div class="icon">⌘</div><h3>企业管理系统</h3><p>围绕订单、客户、员工、财务、权限、分佣和报表打造可配置的企业运营管理平台。</p><div class="tags"><span class="tag">CRM</span><span class="tag">ERP</span><span class="tag">数据大屏</span></div></article>
+          <article class="card reveal" style="--glow:#ffb45c"><div class="icon">◇</div><h3>定制软件研发</h3><p>从零搭建符合实际业务的系统，也可接手现有项目进行功能升级、性能优化和架构重构。</p><div class="tags"><span class="tag">需求分析</span><span class="tag">系统重构</span><span class="tag">接口集成</span></div></article>
+          <article class="card reveal" style="--glow:#ff6fae"><div class="icon">☁</div><h3>云部署与运维</h3><p>完成服务器、数据库、Redis、Nginx、HTTPS、对象存储、备份、监控和自动化发布配置。</p><div class="tags"><span class="tag">云服务器</span><span class="tag">DevOps</span><span class="tag">安全与备份</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Solutions</div><h2>围绕业务结果设计系统</h2></div><p>把复杂需求拆解为清晰、可落地、可测试的产品模块，兼顾快速上线和长期扩展。</p></div>
+        <div class="solutions">
+          <article class="solution reveal"><h3>本地生活与上门服务平台</h3><p>适用于家政、按摩、维修、美业等上门服务场景，打通用户端、服务人员端、管理后台和订单财务系统。</p><ul><li><span class="check">✓</span> 服务项目、技师与门店管理</li><li><span class="check">✓</span> 定位、派单、抢单与履约流程</li><li><span class="check">✓</span> 支付、分佣、结算与售后</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><circle cx="109" cy="81" r="58" stroke="#43e7ff" stroke-opacity=".55"/><circle cx="109" cy="81" r="35" stroke="#9c6cff" stroke-opacity=".7" stroke-dasharray="5 7"/><path d="M109 28v106M56 81h106" stroke="#5c7cff" stroke-opacity=".35"/><circle cx="109" cy="81" r="9" fill="#43e7ff" fill-opacity=".8"/></svg></article>
+          <article class="solution reveal"><h3>AI 营销与内容自动化</h3><p>面向获客、宣传和销售团队，自动完成选题、文案、海报素材、客户跟进与数据汇总。</p><ul><li><span class="check">✓</span> 多平台内容生产与排期</li><li><span class="check">✓</span> 潜客识别与销售辅助</li><li><span class="check">✓</span> 运营数据自动汇总</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><path d="M32 123 80 73l31 25 70-67" stroke="#43e7ff" stroke-width="4" stroke-linecap="round"/><path d="m155 31 26 0 0 26" stroke="#9c6cff" stroke-width="4"/><rect x="31" y="23" width="158" height="113" rx="17" stroke="#5c7cff" stroke-opacity=".4"/></svg></article>
+          <article class="solution wide reveal"><h3>企业数字化运营中台</h3><p>统一管理客户、订单、员工、权限、财务和经营数据，减少多个系统之间的重复录入，让管理者实时掌握业务状态。</p><ul><li><span class="check">✓</span> 多角色与多组织权限体系</li><li><span class="check">✓</span> 业务流程、审批和消息通知</li><li><span class="check">✓</span> 数据报表、经营分析和开放 API</li></ul><svg class="art" viewBox="0 0 220 160" fill="none"><rect x="28" y="30" width="164" height="104" rx="18" stroke="#43e7ff" stroke-opacity=".45"/><rect x="46" y="49" width="45" height="67" rx="10" fill="#43e7ff" fill-opacity=".14"/><rect x="101" y="49" width="72" height="16" rx="8" fill="#9c6cff" fill-opacity=".28"/><rect x="101" y="74" width="72" height="16" rx="8" fill="#5c7cff" fill-opacity=".22"/><rect x="101" y="99" width="47" height="16" rx="8" fill="#43e7ff" fill-opacity=".2"/></svg></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Delivery Process</div><h2>清晰透明的项目交付流程</h2></div><p>每个阶段都有可确认的成果和验收标准，降低沟通成本，也避免做到后期才发现理解偏差。</p></div>
+        <div class="flow">
+          <article class="step reveal"><span>01</span><h3>需求沟通</h3><p>确认目标、用户、场景、预算和上线计划。</p></article>
+          <article class="step reveal"><span>02</span><h3>产品方案</h3><p>梳理功能、流程、原型、技术架构与里程碑。</p></article>
+          <article class="step reveal"><span>03</span><h3>研发联调</h3><p>按模块开发，持续提供可查看、可测试的版本。</p></article>
+          <article class="step reveal"><span>04</span><h3>测试上线</h3><p>完成兼容、安全、性能测试与正式环境部署。</p></article>
+          <article class="step reveal"><span>05</span><h3>持续迭代</h3><p>根据真实业务反馈优化功能和运营效率。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="about-panel reveal">
+          <svg viewBox="0 0 500 360" fill="none" aria-hidden="true">
+            <rect x="76" y="45" width="348" height="270" rx="34" stroke="#6be6ff" stroke-opacity=".35"/>
+            <path d="M120 252c48-78 83-105 132-67 46 36 77-65 129-84" stroke="url(#g)" stroke-width="9" stroke-linecap="round"/>
+            <circle cx="120" cy="252" r="14" fill="#43e7ff"/><circle cx="252" cy="185" r="14" fill="#6d91ff"/><circle cx="381" cy="101" r="14" fill="#a979ff"/>
+            <path d="M117 94h145M117 120h91" stroke="#a8bdd1" stroke-opacity=".35" stroke-width="10" stroke-linecap="round"/>
+            <defs><linearGradient id="g" x1="120" y1="252" x2="381" y2="101" gradientUnits="userSpaceOnUse"><stop stop-color="#43e7ff"/><stop offset=".5" stop-color="#5c7cff"/><stop offset="1" stop-color="#9c6cff"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="about-copy reveal"><div class="kicker">About Beini</div><h2>做可靠、实用、可持续的技术产品</h2><p>贝尼科技以企业真实业务为出发点，强调产品可用性、系统稳定性和长期维护能力。我们愿意把复杂的技术问题讲清楚，把项目风险提前暴露，把每一项功能真正落到业务结果上。</p><div class="principles"><div class="principle"><b>业务优先</b><small>技术方案服务于实际经营目标。</small></div><div class="principle"><b>快速验证</b><small>先做可用版本，再用反馈持续优化。</small></div><div class="principle"><b>安全稳定</b><small>重视权限、数据、备份和上线质量。</small></div><div class="principle"><b>长期合作</b><small>支持后续迭代、运维和系统扩展。</small></div></div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-wrap reveal">
+          <div><div class="kicker">Start a Project</div><h2>有产品想法？<br>让我们一起把它做出来。</h2><p>无论是新项目从零开发、旧系统升级，还是 AI 自动化方案，都可以先沟通需求，再确定合适的实施方式。</p><div class="actions" style="margin-top:25px"><a class="btn btn-primary" href="mailto:871798974@qq.com?subject=%E8%B4%9D%E5%B0%BC%E7%A7%91%E6%8A%80%E9%A1%B9%E7%9B%AE%E5%92%A8%E8%AF%A2">发送项目需求</a><a class="btn btn-outline" href="tel:+8618306665450">电话咨询</a></div></div>
+          <div class="contact-list"><div class="contact-item"><small>联系电话</small><b>183 0666 5450</b></div><div class="contact-item"><small>电子邮箱</small><b>871798974@qq.com</b></div><div class="contact-item"><small>官方网站</small><b>beinikj.com</b></div><div class="contact-item"><small>服务方向</small><b>AI · 小程序 · App · 企业软件</b></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><div>© <span id="year"></span> 贝尼科技 Beini Technology. All rights reserved.</div><div class="footer-links"><a href="#services">技术服务</a><a href="#about">关于我们</a><a href="#contact">联系我们</a></div></div></footer>
+  <script>
+    const topbar=document.getElementById('topbar'),menu=document.getElementById('menu'),nav=document.getElementById('navlinks');
+    addEventListener('scroll',()=>topbar.classList.toggle('scrolled',scrollY>10));
+    menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);menu.textContent=open?'×':'☰'});
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
