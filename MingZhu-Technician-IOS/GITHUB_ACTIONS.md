@@ -2,7 +2,7 @@
 
 ## 仓库要求
 
-把 `D:\RuoYiProjects2` 作为 GitHub 私有仓库根目录上传，至少需要包含：
+当前 GitHub Actions 仓库为 `zbx-qq/ios`，仓库根目录至少需要包含：
 
 - `.github/workflows/ios-technician-testflight.yml`
 - `MingZhu-Technician-IOS/`
@@ -49,6 +49,7 @@ GitHub 仓库页面：
 
 成功后会生成 artifact：
 
-`mingzhu-technician-ios-ipa`
+`beini-technician-ios-ipa-<run_number>`
 
 如果配置了 App Store Connect API Key，会继续自动上传到 TestFlight。
+
