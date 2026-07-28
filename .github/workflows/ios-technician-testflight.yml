@@ -2,19 +2,6 @@ name: iOS Technician TestFlight
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "MingZhu-Technician-IOS/**"
-      - ".github/workflows/ios-technician-testflight.yml"
-
-permissions:
-  contents: read
-
-concurrency:
-  group: ios-technician-release
-  cancel-in-progress: false
 
 env:
   IOS_PROJECT_DIR: MingZhu-Technician-IOS
@@ -22,7 +9,6 @@ env:
   BUNDLE_ID: com.taimingzhu.ymz
   TEAM_ID: 4N529765U3
   PROFILE_NAME: MingZhu DaoJia AppStore
-  MARKETING_VERSION: 1.0.1
 
 jobs:
   build:
@@ -35,11 +21,6 @@ jobs:
         run: |
           sudo xcode-select -s /Applications/Xcode_26.5.app
           xcodebuild -version
-
-      - name: Prepare build metadata
-        run: |
-          set -euo pipefail
-          echo "BUILD_NUMBER=$((GITHUB_RUN_NUMBER + 1000))" >> "$GITHUB_ENV"
 
       - name: Install XcodeGen
         run: brew install xcodegen
@@ -112,9 +93,7 @@ jobs:
             CODE_SIGN_IDENTITY="Apple Distribution" \
             DEVELOPMENT_TEAM="$TEAM_ID" \
             PRODUCT_BUNDLE_IDENTIFIER="$BUNDLE_ID" \
-            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
-            MARKETING_VERSION="$MARKETING_VERSION" \
-            CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
+            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME"
 
       - name: Create export options
         working-directory: ${{ env.IOS_PROJECT_DIR }}
@@ -125,7 +104,7 @@ jobs:
           <plist version="1.0">
           <dict>
             <key>method</key>
-            <string>app-store-connect</string>
+            <string>app-store</string>
             <key>signingStyle</key>
             <string>manual</string>
             <key>teamID</key>
@@ -152,22 +131,29 @@ jobs:
             -exportPath "$PWD/build/export" \
             -exportOptionsPlist "$PWD/ExportOptions.plist"
 
-          cat > "$PWD/build/export/build-info.txt" <<EOF
-          App: 贝尼技师端
-          Version: $MARKETING_VERSION
-          Build: $BUILD_NUMBER
-          Bundle ID: $BUNDLE_ID
-          Source: https://daojia.beinikj.com/technician/home
-          Commit: $GITHUB_SHA
-          EOF
-
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
-          name: beini-technician-ios-ipa-${{ github.run_number }}
-          path: |
-            ${{ env.IOS_PROJECT_DIR }}/build/export/*.ipa
-            ${{ env.IOS_PROJECT_DIR }}/build/export/build-info.txt
-          if-no-files-found: error
-          retention-days: 14
+          name: mingzhu-technician-ios-ipa
+          path: ${{ env.IOS_PROJECT_DIR }}/build/export/*.ipa
 
+      - name: Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+        working-directory: ${{ env.IOS_PROJECT_DIR }}
+        run: |
+          set -euo pipefail
+          if [ -z "${APP_STORE_CONNECT_API_KEY_ID}" ] || [ -z "${APP_STORE_CONNECT_API_ISSUER_ID}" ] || [ -z "${APP_STORE_CONNECT_API_KEY_BASE64}" ]; then
+            echo "App Store Connect API secrets are not configured. IPA artifact was built, skipping TestFlight upload."
+            exit 0
+          fi
+          mkdir -p "$HOME/private_keys"
+          printf '%s' "$APP_STORE_CONNECT_API_KEY_BASE64" | base64 --decode > "$HOME/private_keys/AuthKey_${APP_STORE_CONNECT_API_KEY_ID}.p8" 2>/dev/null || printf '%s' "$APP_STORE_CONNECT_API_KEY_BASE64" | base64 -D > "$HOME/private_keys/AuthKey_${APP_STORE_CONNECT_API_KEY_ID}.p8"
+          IPA_PATH="$(find "$PWD/build/export" -name '*.ipa' -print -quit)"
+          xcrun altool --upload-app \
+            --type ios \
+            --file "$IPA_PATH" \
+            --apiKey "$APP_STORE_CONNECT_API_KEY_ID" \
+            --apiIssuer "$APP_STORE_CONNECT_API_ISSUER_ID"
