@@ -3,7 +3,7 @@ import UIKit
 import WebKit
 
 final class TechnicianViewController: UIViewController {
-    private let appURL = URL(string: "https://ymz.taimingzhu.com/technician/login")!
+    private let appURL = URL(string: "https://m.taimingzhudj.com/technician/home")!
     private var webView: WKWebView!
     private var locationBridge: NativeLocationBridge!
 
