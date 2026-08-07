@@ -8,7 +8,7 @@ env:
   SCHEME: MingZhuTechnician
   BUNDLE_ID: com.taimingzhu.ymz
   TEAM_ID: 4N529765U3
-  PROFILE_NAME: MingZhu DaoJia AppStore
+  PROFILE_NAME: Taimingzhu Technician AppStore
 
 jobs:
   build:
