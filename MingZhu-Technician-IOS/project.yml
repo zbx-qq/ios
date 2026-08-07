@@ -6,7 +6,7 @@ options:
     iOS: "14.0"
 settings:
   base:
-    MARKETING_VERSION: 1.0.0
+    MARKETING_VERSION: 1.0
     CURRENT_PROJECT_VERSION: 1
     SWIFT_VERSION: 5.0
 targets:
@@ -19,12 +19,12 @@ targets:
       - path: Resources
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.taimingzhu.ymz
+        PRODUCT_BUNDLE_IDENTIFIER: com.taimingzhudj.technician
         PRODUCT_NAME: MingZhuTechnician
         INFOPLIST_FILE: Resources/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: 1
-        DEVELOPMENT_TEAM: 4N529765U3
+        DEVELOPMENT_TEAM: 6Z5N36BXV9
         CODE_SIGN_STYLE: Manual
         CODE_SIGN_IDENTITY: Apple Distribution
-        PROVISIONING_PROFILE_SPECIFIER: MingZhu DaoJia AppStore
+        PROVISIONING_PROFILE_SPECIFIER: Taimingzhu Technician AppStore
