@@ -6,8 +6,8 @@ on:
 env:
   IOS_PROJECT_DIR: MingZhu-Technician-IOS
   SCHEME: MingZhuTechnician
-  BUNDLE_ID: com.taimingzhu.ymz
-  TEAM_ID: 4N529765U3
+  BUNDLE_ID: com.taimingzhudj.technician
+  TEAM_ID: 6Z5N36BXV9
   PROFILE_NAME: Taimingzhu Technician AppStore
 
 jobs:
