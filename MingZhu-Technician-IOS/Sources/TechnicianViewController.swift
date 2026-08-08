@@ -19,6 +19,16 @@ final class TechnicianViewController: UIViewController {
         let bridgeScript = """
         (function () {
           if (window.MingZhuNativeLocation) return;
+          function appendToDocument(element) {
+            var target = document.head || document.documentElement;
+            if (target) {
+              target.appendChild(element);
+              return;
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+              (document.head || document.documentElement).appendChild(element);
+            }, { once: true });
+          }
           window.MingZhuNativeLocation = {
             isAvailable: function () { return 'true'; },
             getBestLocation: function (requestId) {
@@ -32,12 +42,16 @@ final class TechnicianViewController: UIViewController {
           if (!meta) {
             meta = document.createElement('meta');
             meta.setAttribute('name', 'viewport');
-            document.head.appendChild(meta);
+            appendToDocument(meta);
           }
           meta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
           var style = document.createElement('style');
-          style.textContent = 'html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;}';
-          document.head.appendChild(style);
+          style.textContent = [
+            'html,body{touch-action:manipulation;-webkit-text-size-adjust:100%;}',
+            '.van-nav-bar{padding-top:constant(safe-area-inset-top);padding-top:env(safe-area-inset-top);}',
+            '.van-nav-bar__left{min-width:44px;min-height:44px;}'
+          ].join('');
+          appendToDocument(style);
         })();
         """
         userContentController.addUserScript(WKUserScript(
